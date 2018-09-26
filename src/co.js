@@ -1,6 +1,12 @@
 const co = require('co')
 const fetch = require('node-fetch')
 
+co(function* () {
+  const res = yield fetch('http://api.douban.com/v2/movie/1291843')
+  const movie = yield res.json()
+  const summary = movie.summary
+})
+//co 里面不能yield 字符串 
 
 // function run(grenerator) {
 //   const iterator = grenerator()
@@ -45,9 +51,9 @@ function F() {
 
 var f = new F();
 
-f.next();  // Object {value: 2, done: false}
-f.next();  // Object {value: 3, done: false}
-f.next();  // Object {value: undefined, done: true}
+f.next(); // Object {value: 2, done: false}
+f.next(); // Object {value: 3, done: false}
+f.next(); // Object {value: undefined, done: true}
 
 f.a // 1
 f.b // 2
@@ -79,7 +85,13 @@ function make(array) {
   if (array.length == 1) return new Tree(null, array[0], null);
   return new Tree(make(array[0]), array[1], make(array[2]));
 }
-let tree = make([[['a'], 'b', ['c']], 'd', [['e'], 'f', ['g']]]);
+let tree = make([
+  [
+    ['a'], 'b', ['c']
+  ], 'd', [
+    ['e'], 'f', ['g']
+  ]
+]);
 
 // 遍历二叉树
 var result = [];
