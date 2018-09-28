@@ -4,12 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-node server/index.js",
+    "build": "rimraf lib && babel server --out-dir lib"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "co": "^4.6.0",
+    "koa": "^2.5.3",
     "node-fetch": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-plugin-transform-es2015-parameters": "^6.24.1",
+    "babel-plugin-transform-es2015-spread": "^6.22.0",
+    "babel-plugin-transform-strict-mode": "^6.24.1",
+    "nodemon": "^1.18.4",
+    "rimraf": "^2.6.2"
   }
 }
